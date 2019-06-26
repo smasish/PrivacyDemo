@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+
+
+
+    <Button
+        android:id="@+id/prof_btn"
+        android:layout_width="match_parent"
+        android:drawableTop="@drawable/men"
+        android:layout_height="wrap_content"
+        android:text="Custome Profile settings"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:padding="15dp"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/install_btn"
+        android:layout_width="match_parent"
+        android:drawableTop="@drawable/installed"
+        android:layout_height="wrap_content"
+        android:text="Installed Apps List"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/perm_btn"
+        android:layout_width="match_parent"
+        android:drawableTop="@drawable/scan"
+        android:layout_height="wrap_content"
+        android:text="Permission Scanning \nUsing Machine Learning "
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        />
+
+</LinearLayout>

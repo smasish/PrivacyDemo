@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:orientation="horizontal" >
+
+
+            <Button
+                android:id="@+id/btnLoc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#a2cb2d"
+                android:layout_weight="1.0"
+                android:paddingTop="20dp"
+                android:text="My Location"
+                android:drawableTop="@drawable/pin4"/>
+
+            <Button
+                android:id="@+id/btnVisual"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#7ecce2"
+                android:layout_weight="1.0"
+                android:paddingTop="20dp"
+                android:text="Visual"
+                android:drawableTop="@drawable/eye" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btAudio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#eb4142"
+                android:layout_weight="1.0"
+                android:paddingTop="20dp"
+                android:text="Audio"
+                android:drawableTop="@drawable/audio"/>
+
+            <Button
+                android:id="@+id/btVideo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#feaa0a"
+                android:layout_weight="1.0"
+                android:paddingTop="20dp"
+                android:text="Video"
+                android:drawableTop="@drawable/yt"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btPic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#337bab"
+                android:paddingTop="20dp"
+                android:layout_weight="1.0"
+                android:text="Pictures"
+                android:drawableTop="@drawable/insta"/>
+
+            <Button
+                android:id="@+id/btcontact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffcd5cff"
+                android:layout_weight="1.0"
+                android:paddingTop="20dp"
+                android:text="Contact"
+                android:drawableTop="@drawable/timesheet"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+

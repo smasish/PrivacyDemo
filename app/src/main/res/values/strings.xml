@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PrivacyDemo</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string name="uninstall_info">Long pressing the application will uninstall the application.</string>
+    <string name="icon_desc">Description</string>
 </resources>

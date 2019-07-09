@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cacs.ul.privacydemo">
 
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +11,7 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TempProfileActivity"></activity>
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +25,7 @@
         <activity android:name=".ProfileUIActivity" />
         <activity android:name=".UserProfileViewActivity" />
         <activity android:name=".CustomTimeSettings" />
-        <activity android:name=".PermissionScannerActivity"></activity>
+        <activity android:name=".PermissionScannerActivity" />
     </application>
 
 </manifest>

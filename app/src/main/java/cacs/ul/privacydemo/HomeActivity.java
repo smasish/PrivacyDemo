@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button btnSystemApps, btn_custom_perm,btnPermission;
+    Button btnSystemApps, btn_custom_perm,btnPermission,btnTempPro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_custom_perm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,ProfileUIActivity.class);
+                Intent intent = new Intent(HomeActivity.this,UserProfileViewActivity.class); //  ProfileUIActivity
                 startActivity(intent);
             }
         });
@@ -52,6 +52,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this,PermissionScannerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnTempPro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this,TempProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,5 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_custom_perm = (Button)findViewById(R.id.prof_btn);
         btnSystemApps = (Button)findViewById(R.id.install_btn);
         btnPermission = (Button)findViewById(R.id.perm_btn);
+
+        btnTempPro= (Button)findViewById(R.id.prof_btn_temp);
     }
 }

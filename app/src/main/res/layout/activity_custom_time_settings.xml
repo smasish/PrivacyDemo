@@ -281,4 +281,128 @@
         android:text="Save" />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/others_title"
+        android:layout_below="@+id/save_lay"
+        >
+
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Copy this settings for follwing items"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:layout_gravity="left|center_vertical"
+        android:layout_below="@+id/save_lay"
+        android:padding="2dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/others1"
+        android:layout_below="@+id/others_title"
+        >
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Custom Location:"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="left|center_vertical"
+            android:padding="2dp" />
+
+        <CheckBox
+            android:id="@+id/loc_c"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:button="@null"
+            android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/others2"
+        android:layout_below="@+id/others1"
+        >
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Contact Info:"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="left|center_vertical"
+            android:padding="2dp" />
+
+        <CheckBox
+            android:id="@+id/loc_c2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Contact"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:button="@null"
+            android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/others3"
+        android:layout_below="@+id/others2"
+        >
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Visual:"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="left|center_vertical"
+            android:padding="2dp" />
+
+        <CheckBox
+            android:id="@+id/loc_c3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Visual"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:button="@null"
+            android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+            />
+
+    </LinearLayout>
+
 </RelativeLayout>

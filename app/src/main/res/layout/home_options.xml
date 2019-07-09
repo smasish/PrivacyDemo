@@ -9,16 +9,28 @@
     android:orientation="vertical">
 
 
-
+    <Button
+        android:id="@+id/prof_btn_temp"
+        android:layout_width="match_parent"
+        android:drawableTop="@drawable/men"
+        android:layout_height="wrap_content"
+        android:text="Temporary Profile settings"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:padding="15dp"
+        android:textAllCaps="false"
+        />
 
     <Button
         android:id="@+id/prof_btn"
         android:layout_width="match_parent"
         android:drawableTop="@drawable/men"
         android:layout_height="wrap_content"
-        android:text="Custome Profile settings"
+        android:text="Long Term Profile settings"
         android:textStyle="bold"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="35dp"
         android:layout_marginLeft="35dp"
         android:padding="15dp"
@@ -31,7 +43,7 @@
         android:drawableTop="@drawable/installed"
         android:layout_height="wrap_content"
         android:text="Installed Apps List"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="35dp"
         android:layout_marginLeft="35dp"
         android:padding="15dp"
@@ -45,7 +57,7 @@
         android:drawableTop="@drawable/scan"
         android:layout_height="wrap_content"
         android:text="Permission Scanning \nUsing Machine Learning "
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="35dp"
         android:layout_marginLeft="35dp"
         android:padding="15dp"

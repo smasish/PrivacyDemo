@@ -40,8 +40,8 @@ public class UserProfileViewActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
 
         Intent intent = getIntent();
-        String get_title = intent.getStringExtra("level");
-        title_view.setText(""+get_title);
+       // String get_title = intent.getStringExtra("level");
+       // title_view.setText(""+get_title);
 
         /**************Shared preference Declaration end******************/
 

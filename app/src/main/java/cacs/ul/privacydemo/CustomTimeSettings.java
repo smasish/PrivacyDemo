@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -210,10 +208,10 @@ e2 = false;
         endTime = set_time_end.getText().toString();
 
         str = loc.getText().toString();
-        TripData tripData = null;
+        ProfileData profileData = null;
 
         if(datasource.getAllComments().size()<2)
-        tripData = datasource.createComment(startDate,endDate,startTime,endTime,str,"-");
+        profileData = datasource.createComment(startDate,endDate,startTime,endTime,str,"-");
 
 
         Toast.makeText(con,"Saved date and time for \nCustom permissions"+set_date.getText(),Toast.LENGTH_LONG).show();

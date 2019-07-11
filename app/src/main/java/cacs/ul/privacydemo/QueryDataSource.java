@@ -31,7 +31,7 @@ public class QueryDataSource {
 		dbHelper.close();
 	}
 
-	public TripData createComment(String startplace, String startKM, String startdatetime, String endplace, String endkm, String enddatetime) {
+	public ProfileData createComment(String startplace, String startKM, String startdatetime, String endplace, String endkm, String enddatetime) {
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_startplace, startplace);
 		values.put(MySQLiteHelper.COLUMN_startKM, startKM);
@@ -86,41 +86,41 @@ public class QueryDataSource {
 
 	}
 
-	public void deleteComment(TripData tripData) {
-		long id = tripData.getId();
-		System.out.println("TripData deleted with id: " + id);
+	public void deleteComment(ProfileData profileData) {
+		long id = profileData.getId();
+		System.out.println("ProfileData deleted with id: " + id);
 		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
 				+ " = " + id, null);
 	//	database.delete(MySQLiteHelper.TABLE_COMMENTS, null, null);
 	}
 
-	public List<TripData> getAllComments() {
-		List<TripData> tripDatas = new ArrayList<TripData>();//new ArrayList<TripData>();
+	public List<ProfileData> getAllComments() {
+		List<ProfileData> profileData = new ArrayList<ProfileData>();//new ArrayList<ProfileData>();
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
 				allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			TripData tripData = cursorToComment(cursor);
+			ProfileData profileData1 = cursorToComment(cursor);
 			//String name=cursor.getString(cursor.getColumnIndex("dhaka"));
-			tripDatas.add(tripData);
+			profileData.add(profileData1);
 			cursor.moveToNext();
 		}
 		// Make sure to close the cursor
 		cursor.close();
-		return tripDatas;
+		return profileData;
 	}
 
-	private TripData cursorToComment(Cursor cursor) {
-		TripData tripData = new TripData();
-		tripData.setId(cursor.getLong(0));
+	private ProfileData cursorToComment(Cursor cursor) {
+		ProfileData profileData = new ProfileData();
+		profileData.setId(cursor.getLong(0));
 
-		tripData.setStartplace(cursor.getString(1));
-		tripData.setStartkm(cursor.getString(2));
-		tripData.setStartdate(cursor.getString(3));
-		tripData.setEndplace(cursor.getString(4));
-		tripData.setEndKM(cursor.getString(5));
-		tripData.setEnddate(cursor.getString(6));
+		profileData.setStartplace(cursor.getString(1));
+		profileData.setStartkm(cursor.getString(2));
+		profileData.setStartdate(cursor.getString(3));
+		profileData.setEndplace(cursor.getString(4));
+		profileData.setEndKM(cursor.getString(5));
+		profileData.setEnddate(cursor.getString(6));
 		//Log.d("...//...."+cursor.getString(2), "..."+cursor.getString(1));
-		return tripData;
+		return profileData;
 	}
 }

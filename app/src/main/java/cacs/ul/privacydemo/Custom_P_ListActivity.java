@@ -34,7 +34,7 @@ public class Custom_P_ListActivity extends AppCompatActivity {
     }
 
 
-    private class TripAdapter extends ArrayAdapter<TripData> {
+    private class TripAdapter extends ArrayAdapter<ProfileData> {
         // StateListActivty context;
         private Context con;
 

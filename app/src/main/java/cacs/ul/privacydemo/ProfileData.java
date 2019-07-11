@@ -2,7 +2,7 @@
 package cacs.ul.privacydemo;
 
 
-public class TripData {
+public class ProfileData {
 	private long id;
 
 

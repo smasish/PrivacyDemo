@@ -267,17 +267,31 @@
         android:id="@+id/save_lay"
         android:layout_below="@+id/accept"
         >
+
+        <Button
+            android:id="@+id/view_pr"
+            android:layout_width="wrap_content"
+
+            android:onClick="view_Time"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="20dp"
+            android:text="View Profile" />
+
     <Button
         android:id="@+id/save"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
 
         android:onClick="saveDateTime"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:padding="10dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Save" />
     </LinearLayout>
 

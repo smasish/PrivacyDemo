@@ -1,6 +1,7 @@
 package cacs.ul.privacydemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.DatePickerDialog;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ private Context con;
     private static Button date_end, time_end;
     private static TextView set_date, set_time;
     private static TextView set_date_end, set_time_end;
+    private EditText loc;
     private static final int Date_id = 0;
     private static final int Time_id = 1;
 
@@ -34,6 +37,11 @@ private Context con;
     private static final int Time_eid = 3;
 
     private boolean e1=false,e2=false;
+
+    /////////////////////////
+    String str="";
+    private String startDate,startTime,endDate,endTime,staff_id;
+    private QueryDataSource datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,7 @@ private Context con;
         set_date_end = (TextView) findViewById(R.id.set_date_to);
         set_time_end = (TextView) findViewById(R.id.set_time_to);
 
+        loc = (EditText)findViewById(R.id.loc_text);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("MM / dd / yyyy"); //MM-dd-yyyy
@@ -108,6 +117,12 @@ private Context con;
                 showDialog(Time_eid);
             }
         });
+
+
+
+        datasource = new QueryDataSource(this);
+        datasource.open();
+        datasource.getAllComments();
 
 
     }
@@ -181,7 +196,33 @@ e2 = false;
         }
     };
 
+    public void view_Time(View v){
+        Intent req = new Intent(CustomTimeSettings.this, Custom_P_ListActivity.class);
+        //req.putExtra("level","Location");
+        startActivity(req);
+    }
+
     public void saveDateTime(View v){
-        Toast.makeText(con,"Saved date and time for \nCustom permissions",Toast.LENGTH_LONG).show();
+//startDate,startTime,endDate,endTime,staff_id;
+        startDate = set_date.getText().toString();
+        endDate = set_date_end.getText().toString();
+        startTime = set_time.getText().toString();
+        endTime = set_time_end.getText().toString();
+
+        str = loc.getText().toString();
+        TripData tripData = null;
+
+        if(datasource.getAllComments().size()<2)
+        tripData = datasource.createComment(startDate,endDate,startTime,endTime,str,"-");
+
+
+        Toast.makeText(con,"Saved date and time for \nCustom permissions"+set_date.getText(),Toast.LENGTH_LONG).show();
+
+
+        Intent req = new Intent(CustomTimeSettings.this, Custom_P_ListActivity.class);
+        req.putExtra("level","Location");
+        startActivity(req);
+
+
     }
 }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:background="#D3D3D3"
+	android:layout_margin="10dip"
+
+	android:layout_width="match_parent" android:layout_height="wrap_content">
+	
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="10dip"
+		>
+
+		<TextView
+			android:id="@+id/place_id"
+			android:textSize="14sp"
+
+			android:layout_gravity="center_vertical|center_horizontal"
+			android:textStyle="bold"
+			android:text="Location \nwork"
+			android:padding="8dip"
+			android:layout_marginTop="5dip"
+			android:layout_marginBottom="5dip"
+			android:layout_marginRight="10dip"
+			android:layout_weight="3"
+			android:gravity="center_vertical"
+			android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+
+
+		<ToggleButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="10dip"
+		>
+	
+	<TextView
+	 android:id="@+id/offertext"
+	android:textSize="14sp"
+
+	android:layout_gravity="center_vertical|center_horizontal"
+		android:textStyle="bold"
+		android:text="From Date"
+		android:padding="2dip"
+		android:layout_marginTop="1dip"
+		android:layout_marginBottom="5dip"
+	    android:layout_marginRight="10dip"
+		android:layout_weight="3"
+		android:gravity="center_vertical"
+		android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+
+
+	<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/s_km_id"
+		android:textSize="14sp"
+
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:textStyle="bold"
+		android:text="To Date"
+		android:padding="2dip"
+		android:layout_marginTop="1dip"
+		android:layout_marginBottom="1dip"
+		android:layout_marginRight="10dip"
+		android:layout_weight="3"
+		android:gravity="center_vertical"
+		android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+	</LinearLayout>
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="10dip"
+		>
+	<TextView
+		android:id="@+id/time_id"
+		android:textSize="14sp"
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:textStyle="bold"
+		android:text="From Time"
+		android:padding="2dip"
+		android:layout_marginTop="1dip"
+		android:layout_marginBottom="1dip"
+		android:layout_marginRight="10dip"
+		android:layout_weight="3"
+		android:layout_width="0dip"
+		android:gravity="center_vertical"
+		 android:layout_height="wrap_content"></TextView>
+
+	<TextView
+		android:id="@+id/endplace_id"
+		android:textSize="14sp"
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:textStyle="bold"
+		android:text="To Time"
+		android:padding="2dip"
+		android:layout_marginTop="1dip"
+		android:layout_marginBottom="1dip"
+		android:layout_marginRight="10dip"
+		android:layout_weight="3"
+		android:gravity="center_vertical"
+		android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+
+
+	</LinearLayout>
+	<TextView
+		android:id="@+id/endkm_id"
+		android:textSize="14sp"
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:textStyle="bold"
+		android:text="this is sample"
+		android:padding="2dip"
+		android:layout_marginTop="1dip"
+		android:layout_marginBottom="1dip"
+		android:layout_marginRight="10dip"
+		android:layout_weight="3"
+		android:gravity="center_vertical"
+		android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+
+	<TextView
+		android:id="@+id/endtime_id"
+		android:textSize="14sp"
+		android:layout_gravity="center_vertical|center_horizontal"
+		android:textStyle="bold"
+		android:text="this is sample"
+		android:padding="2dip"
+		android:layout_marginTop="1dip"
+		android:layout_marginBottom="5dip"
+		android:layout_marginRight="10dip"
+		android:layout_weight="6"
+		android:gravity="center_vertical"
+		android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+
+	</LinearLayout>

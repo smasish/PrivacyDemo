@@ -1,7 +1,14 @@
 package cacs.ul.privacydemo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.Location;
+
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.DatePickerDialog;
@@ -16,16 +23,43 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 
-public class CustomTimeSettings extends AppCompatActivity {
+import com.google.android.gms.location.LocationListener;
+
+import com.google.android.gms.common.api.ResultCallback;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+public class CustomTimeSettings extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
 
 private Context con;
+    private Location mylocation;
+    private GoogleApiClient googleApiClient;
+    private final static int REQUEST_CHECK_SETTINGS_GPS=0x1;
+    private final static int REQUEST_ID_MULTIPLE_PERMISSIONS=0x2;
+
     private static Button date, time;
     private static Button date_end, time_end;
-    private static TextView set_date, set_time;
+    private static TextView set_date, set_time,lat,longs;
     private static TextView set_date_end, set_time_end;
     private EditText loc;
     private static final int Date_id = 0;
@@ -33,7 +67,7 @@ private Context con;
 
     private static final int Date_eid = 2;
     private static final int Time_eid = 3;
-
+    private String lat_st="",long_st="";
     private boolean e1=false,e2=false;
 
     /////////////////////////
@@ -60,6 +94,9 @@ private Context con;
         set_time_end = (TextView) findViewById(R.id.set_time_to);
 
         loc = (EditText)findViewById(R.id.loc_text);
+
+        lat = (TextView) findViewById(R.id.lat_id);
+        longs = (TextView) findViewById(R.id.long_id);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("MM / dd / yyyy"); //MM-dd-yyyy
@@ -116,6 +153,9 @@ private Context con;
             }
         });
 
+
+        setUpGClient();
+        getMyLocation();
 
 
         datasource = new QueryDataSource(this);
@@ -207,11 +247,14 @@ e2 = false;
         startTime = set_time.getText().toString();
         endTime = set_time_end.getText().toString();
 
+        lat_st = lat.getText().toString();
+        long_st = longs.getText().toString();
+
         str = loc.getText().toString();
         ProfileData profileData = null;
 
         if(datasource.getAllComments().size()<2)
-        profileData = datasource.createComment(startDate,endDate,startTime,endTime,str,"-");
+        profileData = datasource.createComment(startDate,endDate,startTime,endTime,str,lat_st,long_st);
 
 
         Toast.makeText(con,"Saved date and time for \nCustom permissions"+set_date.getText(),Toast.LENGTH_LONG).show();
@@ -222,5 +265,131 @@ e2 = false;
         startActivity(req);
 
 
+    }
+
+    ////////////////////////////////////////////////////
+
+    private synchronized void setUpGClient()
+    {
+        googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, 0, this)
+                .addConnectionCallbacks(this).addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API).build();
+        googleApiClient.connect();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        mylocation = location;
+        if (mylocation != null) {
+            Double latitude=mylocation.getLatitude();
+            Double longitude=mylocation.getLongitude();
+
+            lat_st = ""+latitude;
+            long_st = ""+longitude;
+            lat.setText("Latitude : "+latitude);
+            longs.setText("Longitude : "+longitude);
+        }
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        checkPermissions();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+    }
+
+    private void getMyLocation(){
+        if(googleApiClient!=null) {
+            if (googleApiClient.isConnected())
+            {
+                int permissionLocation = ContextCompat.checkSelfPermission(CustomTimeSettings.this,
+                        android.Manifest.permission.ACCESS_FINE_LOCATION);
+                if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+                    mylocation =                     LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+                    LocationRequest locationRequest = new LocationRequest();
+                    locationRequest.setInterval(3000);
+                    locationRequest.setFastestInterval(3000);
+                    locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                    LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+                    builder.setAlwaysShow(true);
+                    LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+                    PendingResult<LocationSettingsResult> result =LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+                    result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+
+                        @Override
+                        public void onResult(LocationSettingsResult result) {
+                            final Status status = result.getStatus();
+                            switch (status.getStatusCode()) {
+                                case LocationSettingsStatusCodes.SUCCESS:
+                                    int permissionLocation = ContextCompat.checkSelfPermission(CustomTimeSettings.this, android.Manifest.permission.ACCESS_FINE_LOCATION);
+                                    if (permissionLocation == PackageManager.PERMISSION_GRANTED)
+                                    {
+                                        mylocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+                                    }
+                                    break;
+                                case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                                    try
+                                    {
+                                        status.startResolutionForResult(CustomTimeSettings.this,REQUEST_CHECK_SETTINGS_GPS);
+                                    }
+                                    catch (IntentSender.SendIntentException e)
+                                    {
+                                    }
+                                    break;
+                                case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                                    break;
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CHECK_SETTINGS_GPS:
+                switch (resultCode) {
+                    case Activity.RESULT_OK:
+                        getMyLocation();
+                        break;
+                    case Activity.RESULT_CANCELED:
+                        finish();
+                        break;
+                }
+                break;
+        }
+    }
+
+    private void checkPermissions(){
+        int permissionLocation = ContextCompat.checkSelfPermission(CustomTimeSettings.this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION);
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        if (permissionLocation != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.ACCESS_FINE_LOCATION);
+            if (!listPermissionsNeeded.isEmpty()) {
+                ActivityCompat.requestPermissions(this,
+                        listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_ID_MULTIPLE_PERMISSIONS);
+            }
+        }else{
+            getMyLocation();
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        int permissionLocation = ContextCompat.checkSelfPermission(CustomTimeSettings.this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
+            getMyLocation();
+        }
     }
 }

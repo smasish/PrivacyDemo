@@ -15,6 +15,8 @@ public class ProfileData {
 	private String endKM;
 	private String enddate;
 
+	private String longi;
+
 	public String getStartkm() {
 		return startkm;
 	}
@@ -47,6 +49,13 @@ public class ProfileData {
 		this.enddate = enddate;
 	}
 
+	public void setLongi(String longi) {
+		this.longi = longi;
+	}
+	public String getLongi() {
+		return longi;
+	}
+
 	public String getStartplace() {
 		return startplace;
 	}
@@ -62,6 +71,8 @@ public class ProfileData {
 	public void setEndplace(String endplace) {
 		this.endplace = endplace;
 	}
+
+
 
 	public long getId() {
 		return id;

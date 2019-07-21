@@ -115,6 +115,44 @@
 
 
 	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="10dip"
+		>
+		<TextView
+			android:id="@+id/lats_id"
+			android:textSize="14sp"
+			android:layout_gravity="center_vertical|center_horizontal"
+			android:textStyle="bold"
+			android:text="Latitude:"
+			android:padding="2dip"
+			android:layout_marginTop="1dip"
+			android:layout_marginBottom="1dip"
+			android:layout_marginRight="10dip"
+			android:layout_weight="3"
+			android:layout_width="0dip"
+			android:gravity="center_vertical"
+			android:layout_height="wrap_content"></TextView>
+
+		<TextView
+			android:id="@+id/lons_id"
+			android:textSize="14sp"
+			android:layout_gravity="center_vertical|center_horizontal"
+			android:textStyle="bold"
+			android:text="Longitude:"
+			android:padding="2dip"
+			android:layout_marginTop="1dip"
+			android:layout_marginBottom="1dip"
+			android:layout_marginRight="10dip"
+			android:layout_weight="3"
+			android:gravity="center_vertical"
+			android:layout_width="0dip" android:layout_height="wrap_content"></TextView>
+
+
+	</LinearLayout>
 	<TextView
 		android:id="@+id/endkm_id"
 		android:textSize="14sp"

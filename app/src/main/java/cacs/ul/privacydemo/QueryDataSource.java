@@ -17,7 +17,7 @@ public class QueryDataSource {
 	private SQLiteDatabase database;
 	private MySQLiteHelper dbHelper;
 	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-			MySQLiteHelper.COLUMN_startplace,MySQLiteHelper.COLUMN_startKM,MySQLiteHelper.COLUMN_startdatetime,MySQLiteHelper.COLUMN_endplace,MySQLiteHelper.COLUMN_endKM,MySQLiteHelper.COLUMN_enddatetime };
+			MySQLiteHelper.COLUMN_startplace,MySQLiteHelper.COLUMN_startKM,MySQLiteHelper.COLUMN_startdatetime,MySQLiteHelper.COLUMN_endplace,MySQLiteHelper.COLUMN_endKM,MySQLiteHelper.COLUMN_enddatetime,MySQLiteHelper.COLUMN_longi };
 
 	public QueryDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
@@ -31,7 +31,7 @@ public class QueryDataSource {
 		dbHelper.close();
 	}
 
-	public ProfileData createComment(String startplace, String startKM, String startdatetime, String endplace, String endkm, String enddatetime) {
+	public ProfileData createComment(String startplace, String startKM, String startdatetime, String endplace, String endkm, String enddatetime,String longi) {
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_startplace, startplace);
 		values.put(MySQLiteHelper.COLUMN_startKM, startKM);
@@ -40,6 +40,7 @@ public class QueryDataSource {
 		values.put(MySQLiteHelper.COLUMN_endplace, endplace);
 		values.put(MySQLiteHelper.COLUMN_endKM, endkm);
 		values.put(MySQLiteHelper.COLUMN_enddatetime, enddatetime);
+		values.put(MySQLiteHelper.COLUMN_longi, longi);
 
 		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
 				values);
@@ -120,6 +121,7 @@ public class QueryDataSource {
 		profileData.setEndplace(cursor.getString(4));
 		profileData.setEndKM(cursor.getString(5));
 		profileData.setEnddate(cursor.getString(6));
+		profileData.setLongi(cursor.getString(7));
 		//Log.d("...//...."+cursor.getString(2), "..."+cursor.getString(1));
 		return profileData;
 	}

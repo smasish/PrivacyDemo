@@ -17,6 +17,7 @@ public class Custom_P_ListActivity extends AppCompatActivity {
     private QueryDataSource datasource;
     TripAdapter adapter;
 
+    private String lat_st="",long_st="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class Custom_P_ListActivity extends AppCompatActivity {
         datasource.getAllComments();
         adapter = new TripAdapter(this);
         lv.setAdapter(adapter);
+
+
 
     }
 
@@ -84,6 +87,16 @@ public class Custom_P_ListActivity extends AppCompatActivity {
             String end_place = datasource.getAllComments().get(position).getEndplace().toString();
             final TextView endplace = (TextView) v.findViewById(R.id.endplace_id);
             endplace.setText("To Time\n"+end_place);
+
+            String lats = datasource.getAllComments().get(position).getEnddate().toString();
+            final TextView lat = (TextView) v.findViewById(R.id.lats_id);
+            lat.setText("Latitude: "+lats);
+
+
+            String longss = datasource.getAllComments().get(position).getLongi().toString();
+            final TextView longs = (TextView) v.findViewById(R.id.lons_id);
+            longs.setText("Longitude: "+longss);
+
 
 //            String end_km = datasource.getAllComments().get(position).getEndKM().toString();
 //            final TextView endkm = (TextView) v.findViewById(R.id.endkm_id);

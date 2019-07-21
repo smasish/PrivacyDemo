@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
         btnTempPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,TempProfileActivity.class);
+                Intent intent = new Intent(HomeActivity.this,UserProfileViewActivity.class);
                 startActivity(intent);
             }
         });

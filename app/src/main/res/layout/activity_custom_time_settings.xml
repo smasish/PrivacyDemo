@@ -220,6 +220,40 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/locations"
+        android:layout_below="@+id/to_time"
+        >
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+            android:text="Lat:"
+            android:id="@+id/lat_id"
+            android:layout_gravity="left|center_vertical"
+            android:padding="2dp" />
+
+
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/long_id"
+            android:text="Long:"
+            android:layout_gravity="right|center_vertical"
+            android:padding="2dp" />
+
+
+    </LinearLayout>
 
 
     <LinearLayout
@@ -227,7 +261,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/accept"
-        android:layout_below="@+id/to_time"
+        android:layout_below="@+id/locations"
         >
 
         <TextView

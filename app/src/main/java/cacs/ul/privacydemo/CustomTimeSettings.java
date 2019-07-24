@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,6 +24,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -359,6 +367,22 @@ e2 = false;
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         getMyLocation();
+                        FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+                        Job job = firebaseJobDispatcher.newJobBuilder()
+                                .setService(GeoFenceService.class)
+                                .setTag("Geofence")
+                                .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+                                .setTag("DeviceGeoFenceService")
+                                .setRecurring(false)
+                                .setReplaceCurrent(true)
+                                .setTrigger(Trigger.executionWindow(0, 0))
+                                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                                .setConstraints(
+                                        Constraint.ON_ANY_NETWORK
+                                )
+                                .build();
+
+                        firebaseJobDispatcher.mustSchedule(job);
                         break;
                     case Activity.RESULT_CANCELED:
                         finish();
@@ -380,6 +404,22 @@ e2 = false;
             }
         }else{
             getMyLocation();
+            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+            Job job = firebaseJobDispatcher.newJobBuilder()
+                    .setService(GeoFenceService.class)
+                    .setTag("Geofence")
+                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+                    .setTag("DeviceGeoFenceService")
+                    .setRecurring(false)
+                    .setReplaceCurrent(true)
+                    .setTrigger(Trigger.executionWindow(0, 0))
+                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                    .setConstraints(
+                            Constraint.ON_ANY_NETWORK
+                    )
+                    .build();
+
+            firebaseJobDispatcher.mustSchedule(job);
         }
 
     }
@@ -390,6 +430,23 @@ e2 = false;
                 android.Manifest.permission.ACCESS_FINE_LOCATION);
         if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
             getMyLocation();
+            Log.d("---hihi-----","---lng--------");
+            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+            Job job = firebaseJobDispatcher.newJobBuilder()
+                    .setService(GeoFenceService.class)
+                    .setTag("Geofence")
+                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+                    .setTag("DeviceGeoFenceService")
+                    .setRecurring(false)
+                    .setReplaceCurrent(true)
+                    .setTrigger(Trigger.executionWindow(0, 0))
+                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                    .setConstraints(
+                            Constraint.ON_ANY_NETWORK
+                    )
+                    .build();
+
+            firebaseJobDispatcher.mustSchedule(job);
         }
     }
 }

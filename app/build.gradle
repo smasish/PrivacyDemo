@@ -29,4 +29,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.0.2'
 
     implementation 'com.google.android.gms:play-services:10.2.6'
+
+
+
+    implementation 'com.firebase:firebase-jobdispatcher-with-gcm-dep:0.5.2'
 }

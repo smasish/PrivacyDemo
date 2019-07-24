@@ -4,4 +4,9 @@
 
     <string name="uninstall_info">Long pressing the application will uninstall the application.</string>
     <string name="icon_desc">Description</string>
+
+    <string name="txt_enter_geofence">Entering In the Geofence</string>
+    <string name="txt_exiting_geofence">Exiting from the Geofence</string>
+    <string name="txt_notification_title">Geofence Notification</string>
+
 </resources>

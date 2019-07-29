@@ -4,4 +4,34 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="medium_text">14sp</dimen>
+    <dimen name="large_text">16sp</dimen>
+
+    <dimen name="items_inbetween_space">8dp</dimen>
+    <dimen name="items_top_padding">4dp</dimen>
+
+    <dimen name="timer_icon">20dp</dimen>
+
+    <!-- Widths -->
+    <dimen name="WidthLabel">90dp</dimen>
+    <dimen name="WidthDialog">280dp</dimen>
+
+
+    <!-- Margins -->
+    <dimen name="MarginHalf">8dp</dimen>
+    <dimen name="MarginStandard">16dp</dimen>
+    <dimen name="MarginDouble">32dp</dimen>
+    <dimen name="MarginFABPadding">96dp</dimen>
+
+    <!-- Text Size -->
+    <dimen name="TextSmall">12sp</dimen>
+    <dimen name="TextStandard">14sp</dimen>
+    <dimen name="TextLarge">16sp</dimen>
+    <dimen name="TextVeryLarge">18sp</dimen>
+    <dimen name="TextEmptyState">20sp</dimen>
+
+    <dimen name="DividerWidth">1dp</dimen>
+
 </resources>

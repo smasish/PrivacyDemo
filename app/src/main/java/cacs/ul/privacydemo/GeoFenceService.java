@@ -37,6 +37,7 @@ public class GeoFenceService extends JobService implements GoogleApiClient.Conne
                 .build();
         mGoogleApiClient.connect();
         jobParameters = job;
+        Log.d("--geo srvc--","-----job started-----");
         return false;
     }
 

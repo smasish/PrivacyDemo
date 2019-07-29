@@ -87,6 +87,14 @@ public class QueryDataSource {
 
 	}
 
+	public void deleteAll() {
+
+		System.out.println("ProfileData deleted with id: " );
+//		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
+//				+ " = " + id, null);
+			database.delete(MySQLiteHelper.TABLE_COMMENTS, null, null);
+	}
+
 	public void deleteComment(ProfileData profileData) {
 		long id = profileData.getId();
 		System.out.println("ProfileData deleted with id: " + id);

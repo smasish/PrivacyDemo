@@ -107,8 +107,9 @@ private Context con;
         longs = (TextView) findViewById(R.id.long_id);
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat mdformat = new SimpleDateFormat("MM / dd / yyyy"); //MM-dd-yyyy
+        SimpleDateFormat mdformat = new SimpleDateFormat("MM/dd/yyyy"); //MM-dd-yyyy
         String strDate = "" + mdformat.format(calendar.getTime());
+
         set_date.setText(strDate);
 
         set_date_end.setText(strDate);
@@ -165,6 +166,24 @@ private Context con;
         setUpGClient();
         getMyLocation();
 
+//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(CustomTimeSettings.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+//        } else {
+//            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+//            Job job = firebaseJobDispatcher.newJobBuilder()
+//                    .setService(GeoFenceService.class)
+//                    .setTag("Geofence")
+//                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+//                    .setRecurring(false)
+//                    .setTrigger(Trigger.executionWindow(0, 0))
+//                    .setReplaceCurrent(true)
+//                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+//                    .setConstraints(
+//                            Constraint.ON_ANY_NETWORK
+//                    )
+//                    .build();
+//            firebaseJobDispatcher.mustSchedule(job);
+//        }
 
         datasource = new QueryDataSource(this);
         datasource.open();
@@ -248,6 +267,12 @@ e2 = false;
         startActivity(req);
     }
 
+    public void geofence(View v){
+        Intent geo = new Intent(CustomTimeSettings.this, AllGeofencesActivity.class);
+        //req.putExtra("level","Location");
+        startActivity(geo);
+    }
+
     public void saveDateTime(View v){
 //startDate,startTime,endDate,endTime,staff_id;
         startDate = set_date.getText().toString();
@@ -261,8 +286,10 @@ e2 = false;
         str = loc.getText().toString();
         ProfileData profileData = null;
 
-        if(datasource.getAllComments().size()<2)
-        profileData = datasource.createComment(startDate,endDate,startTime,endTime,str,lat_st,long_st);
+        if(datasource.getAllComments().size()<2) {
+            datasource.deleteAll();
+            profileData = datasource.createComment(startDate, endDate, startTime, endTime, str, lat_st, long_st);
+        }
 
 
         Toast.makeText(con,"Saved date and time for \nCustom permissions"+set_date.getText(),Toast.LENGTH_LONG).show();
@@ -272,6 +299,45 @@ e2 = false;
         req.putExtra("level","Location");
         startActivity(req);
 
+        String sr = datasource.getAllComments().get(0).getStartdate().toString();
+      //  sr = sr.replaceAll(":","");
+     //   int hr = Integer.parseInt(sr.trim());
+        String[] parts = sr.split(":");
+        String part1 = parts[0]; // 004
+        String part2 = parts[1];
+
+        String sr2 = datasource.getAllComments().get(0).getStartdate().toString();
+     //   sr2 = sr2.replaceAll(":","");
+     //   int min = Integer.parseInt(sr2.trim());
+
+
+
+        //   TimeScheduler.setReminder(CustomTimeSettings.this, AlarmReceiver.class, hr, min);
+
+   //     startService(new Intent(this,LongProfileService.class));
+        int h = Integer.parseInt(part1);
+        int m = Integer.parseInt(part2);
+
+        TimeScheduler_Long.setReminder(CustomTimeSettings.this, Alarm_Long_Prof_Receiver.class, h,m);
+
+//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(CustomTimeSettings.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+//        } else {
+//            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+//            Job job = firebaseJobDispatcher.newJobBuilder()
+//                    .setService(GeoFenceService.class)
+//                    .setTag("Geofence")
+//                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+//                    .setRecurring(false)
+//                    .setTrigger(Trigger.executionWindow(0, 0))
+//                    .setReplaceCurrent(true)
+//                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+//                    .setConstraints(
+//                            Constraint.ON_ANY_NETWORK
+//                    )
+//                    .build();
+//            firebaseJobDispatcher.mustSchedule(job);
+//        }
 
     }
 
@@ -353,6 +419,23 @@ e2 = false;
                                 case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
                                     break;
                             }
+
+//                            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+//                            Job job = firebaseJobDispatcher.newJobBuilder()
+//                                    .setService(GeoFenceService.class)
+//                                    .setTag("Geofence")
+//                                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+//                                    .setTag("DeviceGeoFenceService")
+//                                    .setRecurring(false)
+//                                    .setReplaceCurrent(true)
+//                                    .setTrigger(Trigger.executionWindow(0, 0))
+//                                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+//                                    .setConstraints(
+//                                            Constraint.ON_ANY_NETWORK
+//                                    )
+//                                    .build();
+//
+//                            firebaseJobDispatcher.mustSchedule(job);
                         }
                     });
                 }
@@ -367,22 +450,25 @@ e2 = false;
                 switch (resultCode) {
                     case Activity.RESULT_OK:
                         getMyLocation();
-                        FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
-                        Job job = firebaseJobDispatcher.newJobBuilder()
-                                .setService(GeoFenceService.class)
-                                .setTag("Geofence")
-                                .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
-                                .setTag("DeviceGeoFenceService")
-                                .setRecurring(false)
-                                .setReplaceCurrent(true)
-                                .setTrigger(Trigger.executionWindow(0, 0))
-                                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                                .setConstraints(
-                                        Constraint.ON_ANY_NETWORK
-                                )
-                                .build();
 
-                        firebaseJobDispatcher.mustSchedule(job);
+
+                        Log.d("----loc taken","------lat-----");
+//                        FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+//                        Job job = firebaseJobDispatcher.newJobBuilder()
+//                                .setService(GeoFenceService.class)
+//                                .setTag("Geofence")
+//                                .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+//                                .setTag("DeviceGeoFenceService")
+//                                .setRecurring(false)
+//                                .setReplaceCurrent(true)
+//                                .setTrigger(Trigger.executionWindow(0, 0))
+//                                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+//                                .setConstraints(
+//                                        Constraint.ON_ANY_NETWORK
+//                                )
+//                                .build();
+//
+//                        firebaseJobDispatcher.mustSchedule(job);
                         break;
                     case Activity.RESULT_CANCELED:
                         finish();
@@ -404,22 +490,22 @@ e2 = false;
             }
         }else{
             getMyLocation();
-            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
-            Job job = firebaseJobDispatcher.newJobBuilder()
-                    .setService(GeoFenceService.class)
-                    .setTag("Geofence")
-                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
-                    .setTag("DeviceGeoFenceService")
-                    .setRecurring(false)
-                    .setReplaceCurrent(true)
-                    .setTrigger(Trigger.executionWindow(0, 0))
-                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                    .setConstraints(
-                            Constraint.ON_ANY_NETWORK
-                    )
-                    .build();
-
-            firebaseJobDispatcher.mustSchedule(job);
+//            FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
+////            Job job = firebaseJobDispatcher.newJobBuilder()
+////                    .setService(GeoFenceService.class)
+////                    .setTag("Geofence")
+////                    .setLifetime(Lifetime.UNTIL_NEXT_BOOT)
+////                    .setTag("DeviceGeoFenceService")
+////                    .setRecurring(false)
+////                    .setReplaceCurrent(true)
+////                    .setTrigger(Trigger.executionWindow(0, 0))
+////                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+////                    .setConstraints(
+////                            Constraint.ON_ANY_NETWORK
+////                    )
+////                    .build();
+////
+////            firebaseJobDispatcher.mustSchedule(job);
         }
 
     }
@@ -430,7 +516,7 @@ e2 = false;
                 android.Manifest.permission.ACCESS_FINE_LOCATION);
         if (permissionLocation == PackageManager.PERMISSION_GRANTED) {
             getMyLocation();
-            Log.d("---hihi-----","---lng--------");
+            Log.d("---cus time settings---","---lng----");
             FirebaseJobDispatcher firebaseJobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(CustomTimeSettings.this));
             Job job = firebaseJobDispatcher.newJobBuilder()
                     .setService(GeoFenceService.class)

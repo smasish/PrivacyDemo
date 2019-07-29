@@ -90,12 +90,12 @@ public class Custom_P_ListActivity extends AppCompatActivity {
 
             String lats = datasource.getAllComments().get(position).getEnddate().toString();
             final TextView lat = (TextView) v.findViewById(R.id.lats_id);
-            lat.setText("Latitude: "+lats);
+            lat.setText(""+lats);
 
 
             String longss = datasource.getAllComments().get(position).getLongi().toString();
             final TextView longs = (TextView) v.findViewById(R.id.lons_id);
-            longs.setText("Longitude: "+longss);
+            longs.setText(""+longss);
 
 
 //            String end_km = datasource.getAllComments().get(position).getEndKM().toString();

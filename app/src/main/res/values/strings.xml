@@ -9,4 +9,54 @@
     <string name="txt_exiting_geofence">Exiting from the Geofence</string>
     <string name="txt_notification_title">Geofence Notification</string>
 
+
+    <string name="sett_reminder_header">Temporary profile</string>
+    <string name="sett_reminder_label">Remind Me</string>
+    <string name="sett_reminder_desc">We will remind you to make entiries of your profile</string>
+    <string name="sett_reminder_time_label">Set Finishing time from now for custom profile</string>
+    <string name="sett_reminder_time_content">3 : 00 PM</string>
+    <string name="action_delete_all">Delete All Geofences</string>
+
+    <string name="app_title">Geofence Area List </string>
+
+    <string name="Notification_Title">Geofence: Are we there yet?</string>
+    <string name="Notification_Text">We\'re at %1$s!!!</string>
+
+    <!-- Dialogs -->
+    <string name="AreYouSure">Are you sure?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="Add">Add</string>
+    <string name="Cancel">Cancel</string>
+    <!-- Toast -->
+    <string name="Toast_Validation">Please enter valid data for all fields</string>
+    <string name="Toast_Error">There was an error. Please try again.</string>
+
+    <!-- Hints -->
+    <string name="Hint_Name">Name for the geofence</string>
+    <string name="Hint_Latitude" formatted="false">Latitude (%3.1f\u00B0 to %3.1f\u00B0)</string>
+    <string name="Hint_Longitude" formatted="false">Longitude (%4.1f\u00B0 to %4.1f\u00B0) </string>
+    <string name="Hint_Radius" formatted="false">Radius (%3.2f to %3.1f km)</string>
+
+    <!-- Units -->
+    <string name="Units_Degrees">\u00B0</string>
+    <string name="Units_Kilometers">km</string>
+
+    <!-- Labels -->
+    <string name="LabelName">Name</string>
+    <string name="LabelLatitude">Latitude</string>
+    <string name="LabelLongitude">Longitude</string>
+    <string name="LabelRadius">Radius</string>
+    <string name="LabelAddGeofence">Add a Geofence</string>
+    <string name="LabelEmptyState">You haven\'t created any geofences yet. Tap the plus button to create one.</string>
+
+
+
+    <string name="ButtonDeleteGeofence">DELETE</string>
+
+
+
+
+
+
 </resources>

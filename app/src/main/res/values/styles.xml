@@ -30,5 +30,104 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
     </style>
+    <style name="DeleteButton" parent="AppTheme">
+        <item name="android:textColor">@color/TextColorDarkGray</item>
+        <item name="android:textSize">@dimen/TextStandard</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DividerHorizontal" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/DividerWidth</item>
+        <item name="android:background">@color/Divider</item>
+    </style>
+
+
+    <style name="FloatingActionButton" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/fab_margin</item>
+        <item name="android:layout_marginBottom">@dimen/fab_margin</item>
+        <item name="button_color">@color/fab_material_green_500</item>
+        <item name="button_colorPressed">@color/fab_material_green_900</item>
+    </style>
+
+    <style name="TextViewSmall" parent="TextView">
+        <item name="android:textColor">@color/TextColorBlack</item>
+        <item name="android:textSize">@dimen/TextSmall</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlNormal">#ffffff</item>
+    </style>
+
+    <style name="TextView" parent="AppTheme">
+        <item name="android:textColor">@color/TextColorDarkGray</item>
+        <item name="android:textSize">@dimen/TextStandard</item>
+    </style>
+
+    <style name="TextViewEmptyState" parent="TextView">
+        <item name="android:textColor">@color/TextColorWhite</item>
+        <item name="android:textSize">@dimen/TextEmptyState</item>
+        <item name="android:layout_margin">@dimen/MarginDouble</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextView.Header" parent="TextView">
+        <item name="android:textColor">@color/ColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/TextVeryLarge</item>
+    </style>
+
+
+    <style name="EditText" parent="AppTheme">
+        <item name="android:textColor">@color/TextColorBlack</item>
+        <item name="android:textColorHint">@color/TextColorGray</item>
+        <item name="android:layout_marginRight">@dimen/MarginStandard</item>
+        <item name="android:layout_marginLeft">@dimen/MarginStandard</item>
+        <item name="android:layout_marginTop">@dimen/MarginHalf</item>
+        <item name="android:layout_marginBottom">@dimen/MarginHalf</item>
+        <item name="android:textSize">@dimen/TextStandard</item>
+    </style>
+
+    <style name="settings_item_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>-->
+        <!--<item name="android:paddingRight">@dimen/activity_horizontal_margin</item>-->
+        <!--<item name="android:paddingTop">@dimen/activity_vertical_margin</item>-->
+        <item name="android:paddingBottom">@dimen/items_inbetween_space</item>
+
+    </style>
+
+    <style name="settings_header">
+        <item name="android:textColor">@color/textcolorHeader</item>
+        <item name="android:textSize">@dimen/large_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="settings_sub_header">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="settings_details">
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="switch_theme">
+        <item name="thumbTint">@color/switch_color</item>
+        <item name="trackTint">@color/track_color</item>
+    </style>
 
 </resources>

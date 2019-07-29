@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minWidth="@dimen/WidthDialog">
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/MarginStandard"
+      android:layout_gravity="center"
+      style="@style/TextView.Header"
+      android:text="@string/LabelAddGeofence"/>
+
+  <EditText
+      android:id="@+id/fragment_add_geofence_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/EditText"
+      android:hint="@string/Hint_Name"/>
+
+  <EditText
+      android:id="@+id/fragment_add_geofence_latitude"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="number"
+      android:digits="0123456789.-"
+      style="@style/EditText"
+      android:hint="@string/Hint_Latitude"/>
+
+
+  <EditText
+      android:id="@+id/fragment_add_geofence_longitude"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="number"
+      android:digits="0123456789.-"
+      style="@style/EditText"
+      android:hint="@string/Hint_Longitude"/>
+
+  <EditText
+      android:id="@+id/fragment_add_geofence_radius"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="number"
+      android:digits="0123456789."
+      style="@style/EditText"
+      android:hint="@string/Hint_Radius"/>
+
+</LinearLayout>

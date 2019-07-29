@@ -3,4 +3,25 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="Background">#408D42</color>
+    <color name="ColorPrimary">#4caf50</color>
+
+    <color name="textColorSecondary">#A5A5A5</color>
+    <color name="Divider">#333333</color>
+    <color name="textcolorHeader">#069ECF</color>
+    <color name="textColorPrimary">#000000</color>
+
+    <color name="thumb_active">#069ECF</color>
+    <color name="track_active">#66069ECF</color>
+
+    <color name="thumb_inactive">#A5A5A5</color>
+    <color name="track_inactive">#66A5A5A5</color>
+
+    <color name="BackgroundCardView">#DDDDDD</color>
+
+    <color name="TextColorWhite">#FFFFFF</color>
+    <color name="TextColorGray">#999999</color>
+    <color name="TextColorDarkGray">#333333</color>
+    <color name="TextColorBlack">#000000</color>
+
 </resources>

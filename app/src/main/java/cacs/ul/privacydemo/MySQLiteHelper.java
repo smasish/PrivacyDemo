@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
-	public static final String TABLE_COMMENTS = "testtable";
+	public static final String TABLE_COMMENTS = "testtable2";
 	public static final String COLUMN_ID = "_id";
 
 	public static final String COLUMN_startplace = "dhaka";
@@ -22,7 +22,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
 	public static final String COLUMN_longi = "longs";
 
-	private static final String DATABASE_NAME = "testdb.db";
+	private static final String DATABASE_NAME = "testdb2.db";
 	private static final int DATABASE_VERSION = 1;
 
 	// Database creation sql statement

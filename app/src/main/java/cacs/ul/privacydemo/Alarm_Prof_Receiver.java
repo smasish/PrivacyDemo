@@ -27,13 +27,14 @@ public class Alarm_Prof_Receiver extends BroadcastReceiver {
         Log.d(TAG, "onReceive: ");
 
         //Trigger the notification
-        TimeScheduler_Temp.showNotification(context, TempSettingsActivity.class,
-                "You have notification.", "working now?");
+//        TimeScheduler_Temp.showNotification(context, TempSettingsActivity.class,
+//                "You have notification.", "working now?");
 
 
         ////////////////
 
         Intent x = new Intent(context,Main2Activity.class);
+        x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
          context.startActivity(x);
 
 //        String beforeEnable = Settings.Secure.getString (context.getContentResolver(),

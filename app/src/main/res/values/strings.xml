@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PrivacyDemo</string>
+    <string name="app_name">Personal Privacy Assistant</string>
     <string name="title_activity_main">MainActivity</string>
 
     <string name="uninstall_info">Long pressing the application will uninstall the application.</string>
